@@ -12,6 +12,13 @@ function Pokemon(pokeName, health, magic){
         console.log(`${this.pokeName}'s status \nHEALTH: ${this.health}  \nMAGIC: ${this.magic} \n`);
     };
 
+    this.showSkills = function(){
+        const arrSkills = this.skills.map((item, index) => {
+            return ` ${index}: ${item.attackName}`
+        })
+        console.log(`${this.pokeName}'s skills are ${arrSkills}`);
+    }
+
     this.getMagic = function(amount){
         this.magic = this.magic + amount
     };
@@ -20,7 +27,6 @@ function Pokemon(pokeName, health, magic){
         if (this.skills[attackIndex].useMagic > this.magic){
             console.log(`not enough magic, cannot launch attack!`);
         } else {
-            // console.log(this.skills[attackIndex].damage);
             enemy.health = enemy.health - this.skills[attackIndex].damage
             console.log(
             `${this.pokeName} launched skill ${this.skills[attackIndex].attackName} successfully! \n${enemy.pokeName} got ${this.skills[attackIndex].damage} damage \n`    
@@ -62,3 +68,5 @@ pikapu.attack(1, honkidonki)
 pikapu.attack(1, honkidonki)
 pikapu.attack(1, honkidonki)
 honkidonki.showStatus()
+
+pikapu.showSkills()
